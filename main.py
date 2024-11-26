@@ -20,8 +20,6 @@ app = Flask(__name__)
 def hello_world():
     title = "Cancer Detection"
     
-    
-
     new_patient_data = []
 
     prediction = None
@@ -133,3 +131,6 @@ def hello_world():
             prediction_proba = prob_malignant
 
     return render_template("home.html", title=title, benign_metrics=benign_metrics, malignant_metrics=malignant_metrics, accuracy=accuracy, macro_avg=macro_avg, weighted_avg=weighted_avg, prediction=prediction, prediction_proba=prediction_proba)
+
+if __name__ == "__main__":
+    app.run(debug=True)

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ title }}</title>
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Cancer Classification</h1>
+  <form action="/" method="post">
+    <div>
+      <label for="mean_radius">Mean Radius</label>
+      <input id="mean_radius" type="text" name="mean_radius" />
+    </div>
+    <div>
+      <label for="mean_texture">Mean Texture</label>
+      <input id="mean_texture" type="text" name="mean_texture" />
+    </div>
+    <div>
+      <label for="mean_perimeter">Mean Perimeter</label>
+      <input id="mean_perimeter" type="text" name="mean_perimeter" />
+    </div>
+    <div>
+      <label for="mean_area">Mean Area</label>
+      <input id="mean_area" type="text" name="mean_area" />
+    </div>
+    <div>
+      <label for="mean_smoothness">Mean Smoothness</label>
+      <input id="mean_smoothness" type="text" name="mean_smoothness" />
+    </div>
+    <div>
+      <label for="mean_compactness">Mean Compactness</label>
+      <input id="mean_compactness" type="text" name="mean_compactness" />
+    </div>
+    <div>
+      <label for="mean_concavity">Mean Concavity</label>
+      <input id="mean_concavity" type="text" name="mean_concavity" />
+    </div>
+    <div>
+      <label for="mean_concave_points">Mean Concave Points</label>
+      <input id="mean_concave_points" type="text" name="mean_concave_points" />
+    </div>
+    <div>
+      <label for="mean_symmetry">Mean Symmetry</label>
+      <input id="mean_symmetry" type="text" name="mean_symmetry" />
+    </div>
+    <div>
+      <label for="mean_fractal_dimension">Mean Fractal Dimension</label>
+      <input id="mean_fractal_dimension" type="text" name="mean_fractal_dimension" />
+    </div>
+    <div>
+      <label for="radius_error">Radius Error</label>
+      <input id="radius_error" type="text" name="radius_error" />
+    </div>
+    <div>
+      <label for="texture_error">Texture Error</label>
+      <input id="texture_error" type="text" name="texture_error" />
+    </div>
+    <div>
+      <label for="perimeter_error">Perimeter Error</label>
+      <input id="perimeter_error" type="text" name="perimeter_error" />
+    </div>
+    <div>
+      <label for="area_error">Area Error</label>
+      <input id="area_error" type="text" name="area_error" />
+    </div>
+    <div>
+      <label for="smoothness_error">Smoothness Error</label>
+      <input id="smoothness_error" type="text" name="smoothness_error" />
+    </div>
+    <div>
+      <label for="compactness_error">Compactness Error</label>
+      <input id="compactness_error" type="text" name="compactness_error" />
+    </div>
+    <div>
+      <label for="concavity_error">Concavity Error</label>
+      <input id="concavity_error" type="text" name="concavity_error" />
+    </div>
+    <div>
+      <label for="concave_points_error">Concave Points Error</label>
+      <input id="concave_points_error" type="text" name="concave_points_error" />
+    </div>
+    <div>
+      <label for="symmetry_error">Symmetry Error</label>
+      <input id="symmetry_error" type="text" name="symmetry_error" />
+    </div>
+    <div>
+      <label for="fractal_dimension_error">Fractal Dimension Error</label>
+      <input id="fractal_dimension_error" type="text" name="fractal_dimension_error" />
+    </div>
+    <div>
+      <label for="worst_radius">Worst Radius</label>
+      <input id="worst_radius" type="text" name="worst_radius" />
+    </div>
+    <div>
+      <label for="worst_texture">Worst Texture</label>
+      <input id="worst_texture" type="text" name="worst_texture" />
+    </div>
+    <div>
+      <label for="worst_perimeter">Worst Perimeter</label>
+      <input id="worst_perimeter" type="text" name="worst_perimeter" />
+    </div>
+    <div>
+      <label for="worst_area">Worst Area</label>
+      <input id="worst_area" type="text" name="worst_area" />
+    </div>
+    <div>
+      <label for="worst_smoothness">Worst Smoothness</label>
+      <input id="worst_smoothness" type="text" name="worst_smoothness" />
+    </div>
+    <div>
+      <label for="worst_compactness">Worst Compactness</label>
+      <input id="worst_compactness" type="text" name="worst_compactness" />
+    </div>
+    <div>
+      <label for="worst_concavity">Worst Concavity</label>
+      <input id="worst_concavity" type="text" name="worst_concavity" />
+    </div>
+    <div>
+      <label for="worst_concave_points">Worst Concave Points</label>
+      <input id="worst_concave_points" type="text" name="worst_concave_points" />
+    </div>
+    <div>
+      <label for="worst_symmetry">Worst Symmetry</label>
+      <input id="worst_symmetry" type="text" name="worst_symmetry" />
+    </div>
+    <div>
+      <label for="worst_fractal_dimension">Worst Fractal Dimension</label>
+      <input id="worst_fractal_dimension" type="text" name="worst_fractal_dimension" />
+    </div>
+    <button type="submit">Mulai Prediksi</button>
+  </form>
+
+  <hr>
+  <h1>Hasil:</h1>
+  <h2>Hasil Prediksi = <b>{{ prediction }}</b> </h2>
+  <h2>Dengan Probabilitas Prediksi = <b>{{ prediction_proba }}%</b> </h2>
+  <h5>Laporan Klasifikasi Lengkap :</h5>
+  <table>
+    <tr>
+      <th>Properti</th>
+      <th>Precision</th>
+      <th>Recall</th>
+      <th>F1-Score</th>
+      <th>Support</th>
+    </tr>
+    <tr>
+      <td>Benign</td>
+      <td>{{ benign_metrics['precision'] }}</td>
+      <td>{{ benign_metrics['recall'] }}</td>
+      <td>{{ benign_metrics['f1-score'] }}</td>
+      <td>{{ benign_metrics['support'] }}</td>
+    </tr>
+    <tr>
+      <td>Malignant</td>
+      <td>{{ malignant_metrics['precision'] }}</td>
+      <td>{{ malignant_metrics['recall'] }}</td>
+      <td>{{ malignant_metrics['f1-score'] }}</td>
+      <td>{{ malignant_metrics['support'] }}</td>
+    </tr>
+    <tr>
+      <td>Accuracy</td>
+      <td>{{ accuracy['precision'] }}</td>
+      <td>{{ accuracy['recall'] }}</td>
+      <td>{{ accuracy['f1-score'] }}</td>
+      <td>{{ accuracy['support'] }}</td>
+    </tr>
+    <tr>
+      <td>Macro Avg</td>
+      <td>{{ macro_avg['precision'] }}</td>
+      <td>{{ macro_avg['recall'] }}</td>
+      <td>{{ macro_avg['f1-score'] }}</td>
+      <td>{{ macro_avg['support'] }}</td>
+    </tr>
+    <tr>
+      <td>Weighted Avg</td>
+      <td>{{ weighted_avg['precision'] }}</td>
+      <td>{{ weighted_avg['recall'] }}</td>
+      <td>{{ weighted_avg['f1-score'] }}</td>
+      <td>{{ weighted_avg['support'] }}</td>
+    </tr>
+  </table>
+</body>
+
+</html>
